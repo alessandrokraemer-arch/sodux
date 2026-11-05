@@ -29,14 +29,21 @@ try {
 
     // AQUI UMA AVERIGUAÇÃO MAS EM CÓDIGO ABERTO O PARA EXEMPLIFICAR E DEVA APRIMORAR QUE EM CÓDIO COMPILADO É MAIS CONDIZENTE...
     PreparedStatement ps = conn.prepareStatement("SELECT tokenVigente FROM autenticacaoMais WHERE usuario = ? AND senha = MD5(?)");
-    ps.setString(1,(String) request.getParameter("user"));
+    String user = (String) request.getParameter("user");
+    ps.setString(1,user);
     ps.setString(2,(String) request.getParameter("password"));
     
     ResultSet rs = ps.executeQuery();
     if (rs != null && rs.next()) {
-        String token = rs.getString(1);
+        String autorizacao = rs.getString(1);
 
-        session.setAttribute("autorizacao",token);
+        PreparedStatement ps = conn.prepareStatement("UPDATE autenticacaoMais SET tokenVigente = ?, sessaoUltima = ?, dataHoraUltimaAutorizacao = NOW() WHERE usuario = ?");
+        ps.setString(1,(String) session.getId());
+        ps.setString(2,(String) session.getId());
+        ps.setString(3,user);
+        ps.executeUpdate();
+        
+        session.setAttribute("autorizacao", autorizacao);
         
         out.print("<p align='center'>AUTORIZADO <a href='autorizo.jsp'>ACESSE MAIS</a></p>");
     } else {
