@@ -46,7 +46,7 @@ try {
     //    if (autorizacao != (String) session.getId())
     //        session.setAttribute("autorizacao", session.getId());
       
-        out.print("<p align='center'>AUTORIZADO <a href='autorizo.jsp'>ACESSE MAIS</a></p>"+ (String) session.getId());
+        out.print("<p align='center'>AUTORIZADO <a href='autorizo.jsp'>ACESSE MAIS</a></p>"+ (String) session.getId() + " -- "+ user);
     } else {
         out.print("<p align='center'>TOKEN NÃO ENCONTRADO. ASSINE OU ATUALIZE O PLANO...</p>");
     }
