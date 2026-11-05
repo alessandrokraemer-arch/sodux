@@ -6,7 +6,7 @@ response.setHeader("Pragma","no-cache");
 response.setDateHeader("Expires",0);
 
 String ses = session.getAttribute("autorizacao");
-if ( ses.equals((String) session.getId())
+if ( ses.equals((String) session.getId()) )
     session.setAttribute("autorizacao","descabida");
 %>
 
