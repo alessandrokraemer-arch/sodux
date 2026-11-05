@@ -4,6 +4,10 @@
 response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
 response.setHeader("Pragma","no-cache");
 response.setDateHeader("Expires",0);
+
+String ses = session.getAttribute("autorizacao");
+if ( ses.equals((String) session.getId())
+    session.setAttribute("autorizacao","descabida");
 %>
 
 <html>
@@ -43,8 +47,8 @@ try {
         psUpdate.setString(3,user);
         psUpdate.executeUpdate();
         
-    //    if (autorizacao != (String) session.getId())
-    //        session.setAttribute("autorizacao", session.getId());
+        if (autorizacao != (String) session.getId())
+            session.setAttribute("autorizacao", session.getId());
       
         out.print("<p align='center'>AUTORIZADO <a href='autorizo.jsp'>ACESSE MAIS</a></p>"+ (String) session.getId() + " -- "+ user);
     } else {
