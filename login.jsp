@@ -22,8 +22,8 @@ try {
 	Class.forName("com.mysql.cj.jdbc.Driver");
 	conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enterprise", "saas", "saas");
 
-    // UM TOKEN É GERADO ALEATÓRIO EM FUNÇÃO NO BANCO DE DADOS
-    PreparedStatement ps = conn.prepareStatement("SELECT token FROM login WHERE user = ? AND password = MD5(?)");
+    // AQUI UMA AVERIGUAÇÃO MAS EM CÓDIGO ABERTO O PARA EXEMPLIFICAR E DEVA APRIMORAR QUE EM CÓDIO COMPILADO É MAIS CONDIZENTE...
+    PreparedStatement ps = conn.prepareStatement("SELECT tokenVigente FROM autenticacaoMais WHERE usuario = ? AND senha = MD5(?)");
     ps.setString(1,(String) request.getParameter("user"));
     ps.setString(2,(String) request.getParameter("password"));
     
@@ -31,7 +31,7 @@ try {
     if (rs != null && rs.next()) {
         String token = rs.getString(1);
 
-        session.setAttribute("token",token);
+        session.setAttribute("autorizacao",token);
         
         out.print("<p align='center'>Conectado</p>");
     } else {
