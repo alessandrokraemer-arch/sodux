@@ -41,7 +41,7 @@ try {
         psUpdate.setString(1,(String) session.getId());
         psUpdate.setString(2,(String) session.getId());
         psUpdate.setString(3,user);
-        psUpdate.executeUpdate();
+      //  psUpdate.executeUpdate();
         
     //    if (autorizacao != (String) session.getId())
     //        session.setAttribute("autorizacao", session.getId());
