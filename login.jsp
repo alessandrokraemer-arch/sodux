@@ -38,7 +38,7 @@ try {
 
         session.setAttribute("autorizacao",token);
         
-        out.print("<p align='center'>AUTORIZADO <a href="autorizo.jsp">ACESSE MAIS</a></p>");
+        out.print("<p align='center'>AUTORIZADO <a href='autorizo.jsp'>ACESSE MAIS</a></p>");
     } else {
         out.print("<p align='center'>TOKEN NÃO ENCONTRADO. ASSINE OU ATUALIZE O PLANO...</p>");
     }
