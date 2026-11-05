@@ -4,7 +4,7 @@ response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
 response.setHeader("Pragma","no-cache");
 response.setDateHeader("Expires",0);
 
-String ses = session.getAttribute("autorizacao");
+String ses = (String) session.getAttribute("autorizacao");
 if ( ses.equals((String) session.getId()) )
     response.sendRedirect("login.jsp");
 %>
