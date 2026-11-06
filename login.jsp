@@ -33,14 +33,14 @@ try {
 	conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enterprise", "saas", "saas");
 
     // AQUI UMA AVERIGUAÇÃO MAS EM CÓDIGO ABERTO O PARA EXEMPLIFICAR E DEVA APRIMORAR QUE EM CÓDIO COMPILADO É MAIS CONDIZENTE...
-    PreparedStatement psQuery = conn.prepareStatement("SELECT tokenVigente FROM autenticacaoMais WHERE usuario = ? AND senha = MD5(?)");
+    PreparedStatement psQuery = conn.prepareStatement("SELECT usuario FROM autenticacaoMais WHERE usuario = ? AND senha = MD5(?)");
     String user = (String) request.getParameter("user");
     psQuery.setString(1,user);
     psQuery.setString(2,(String) request.getParameter("password"));
     
     ResultSet rs = psQuery.executeQuery();
     if (rs != null && rs.next()) {
-        String autorizacao = rs.getString(1);
+        String usuarioBD = rs.getString(1);
 
         PreparedStatement psUpdate = conn.prepareStatement("UPDATE autenticacaoMais SET tokenVigente = ?, sessaoUltima = ?, dataHoraUltimaAutorizacao = NOW() WHERE usuario = ?");
         psUpdate.setString(1,(String) session.getId());
@@ -48,8 +48,8 @@ try {
         psUpdate.setString(3,user);
         psUpdate.executeUpdate();
         
-        if (autorizacao != (String) session.getId())
-            session.setAttribute("autorizacao", session.getId());
+        session.setAttribute("autorizacao", session.getId());
+        session.setAttribute("usuario", usuarioBD);
       
         out.print("<p align='center'>AUTORIZADO <a href='autorizo.jsp'>ACESSE MAIS</a></p>");
     } else {
