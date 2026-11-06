@@ -6,10 +6,9 @@ response.setHeader("Pragma","no-cache");
 response.setDateHeader("Expires",0);
 
 String ses = (String) session.getAttribute("autorizacao");
-if ( ses != null)
-    if ( ses.equals((String) session.getId()) ) {
+if ( ses != null )
+    if ( !ses.equals(("descabida")) ) 
         response.sendRedirect("index.jsp");
-    }
 %>
 
 <html>
@@ -41,16 +40,16 @@ try {
     
     ResultSet rs = psQuery.executeQuery();
     if (rs != null && rs.next()) {
-//        String usuarioBD = rs.getString(1);
+        String usuarioBD = rs.getString(1);
 
-  //      PreparedStatement psUpdate = conn.prepareStatement("UPDATE autenticacaoMais SET tokenVigente = ?, sessaoUltima = ?, dataHoraUltimaAutorizacao = NOW() WHERE usuario = ?");
-    //    psUpdate.setString(1,(String) session.getId());
-      //  psUpdate.setString(2,(String) session.getId());
-        //psUpdate.setString(3,user);
-        //psUpdate.executeUpdate();
+        PreparedStatement psUpdate = conn.prepareStatement("UPDATE autenticacaoMais SET tokenVigente = ?, sessaoUltima = ?, dataHoraUltimaAutorizacao = NOW() WHERE usuario = ?");
+        psUpdate.setString(1,(String) session.getId());
+        psUpdate.setString(2,(String) session.getId()); // ISSO AQUI É PARA UMA CONSULTA FUTURA E PODEM HAVER MAIS CAMPOS
+        psUpdate.setString(3,user);
+        psUpdate.executeUpdate();
         
-        //session.setAttribute("autorizacao", session.getId());
-        //session.setAttribute("usuario", usuarioBD);
+        session.setAttribute("autorizacao", session.getId());
+        session.setAttribute("usuario", usuarioBD);
       
         out.print("<p align='center'>AUTORIZADO <a href='autorizo.jsp'>ACESSE MAIS</a></p>");
     } else {
