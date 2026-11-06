@@ -5,9 +5,10 @@ response.setHeader("Pragma","no-cache");
 response.setDateHeader("Expires",0);
 
 String ses = (String) session.getAttribute("autorizacao");
-if ( ses != null )
-    if ( ses.equals((String) session.getId()) )
-        response.sendRedirect("login.jsp");
+if ( ses != null ) {
+    session.setAttribute("autorizacao","descabida");
+    session.setAttribute("usuario","ninguém");
+}
 %>
 
 <html>

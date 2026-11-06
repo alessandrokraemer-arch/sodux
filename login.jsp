@@ -7,8 +7,9 @@ response.setDateHeader("Expires",0);
 
 String ses = (String) session.getAttribute("autorizacao");
 if ( ses != null)
-    if ( ses.equals((String) session.getId()) )
-        session.setAttribute("autorizacao","descabida");
+    if ( ses.equals((String) session.getId()) ) {
+        response.sendRedirect("index.jsp");
+    }
 %>
 
 <html>
