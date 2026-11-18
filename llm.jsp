@@ -75,10 +75,10 @@ if (apiKey == null || apiKey.isEmpty()) { %>
             out.println(resposta);
 
             // 1. Converte a String em um JSONObject
-            //JSONObject rootObject = new JSONObject(resposta);
+            JSONObject rootObject = new JSONObject(resposta);
 
             // 2. Acessa o array "choices" e pega o primeiro item (índice 0)
-            //JSONArray choicesArray = rootObject.getJSONArray("choices");
+            JSONArray choicesArray = rootObject.getJSONArray("choices");
             //JSONObject firstChoice = choicesArray.getJSONObject(0);
 
             // 3. Acessa o objeto "message" e extrai a string "content"
