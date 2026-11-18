@@ -22,10 +22,43 @@ if (apiKey == null || apiKey.isEmpty()) { %>
     
 <% } else {
 
+    //String perguntaUsuario = request.getParameter("pergunta");
+    String perguntaUsuario = "o que fazer hoje?";
+
+    if (perguntaUsuario != null && !perguntaUsuario.trim().isEmpty()) {
+        try {
+            // 1. Montar o JSON de requisição para a OpenAI
+            JSONObject jsonBody = new JSONObject();
+            jsonBody.put("model", "gpt-4o-mini");
+
+            // Força a API a retornar um JSON válido (JSON Mode)
+            JSONObject responseFormat = new JSONObject();
+            responseFormat.put("type", "json_object");
+            jsonBody.put("response_format", responseFormat);
+
+            JSONArray messages = new JSONArray();
+                
+            // Instrução do sistema (obrigatório mencionar "JSON" quando usar json_object)
+            //JSONObject systemMessage = new JSONObject();
+            //systemMessage.put("role", "system");
+            //systemMessage.put("content", "Você é um assistente útil. Responda sempre em formato JSON contendo as chaves 'resumo' e 'topicos' (uma lista de strings).");
+            //messages.put(systemMessage);
+
+            // Mensagem do usuário
+            JSONObject userMessage = new JSONObject();
+            userMessage.put("role", "user");
+            userMessage.put("content", perguntaUsuario);
+            messages.put(userMessage);
+
+            jsonBody.put("messages", messages);
+
     //String pergunta = (String) request.getParameter("perguntaHTML");
 
     // Configuração da requisição em JSON (Responses API / Chat Completions) e esse é o endpoint.
-    String jsonBody = "{'model': 'gpt-4o','messages': [{'role': 'user', 'content': 'Qual o dia hoje?''}]}";
+
+
+
+    //String jsonBody = "{'model': 'gpt-4o','messages': [{'role': 'user', 'content': 'Qual o dia hoje?''}]}";
 
     // Cria o cliente e a requisição HTTP
     HttpClient client = HttpClient.newHttpClient();
@@ -43,7 +76,7 @@ if (apiKey == null || apiKey.isEmpty()) { %>
         String resposta = responseJSON.body().toString();
     
         out.println(resposta);
-        
+
         // 1. Converte a String em um JSONObject
         //JSONObject rootObject = new JSONObject(resposta);
 
