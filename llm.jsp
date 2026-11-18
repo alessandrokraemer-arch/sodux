@@ -17,7 +17,7 @@
 // e armazenamento dessa chave. 
 // String apiKey = System.getenv("OPENAI_API_KEY");
 
-String apiKey "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";
+String apiKey = "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";
 
 if (apiKey == null || apiKey.isEmpty()) { %>
 
