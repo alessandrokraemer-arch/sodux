@@ -29,20 +29,20 @@ if (apiKey == null || apiKey.isEmpty()) { %>
         try {
             // 1. Montar o JSON de requisição para a OpenAI
             JSONObject jsonBody = new JSONObject();
-            jsonBody.put("model", "gpt-4o-mini");
+            jsonBody.put("model", "gpt-4o");
 
             // Força a API a retornar um JSON válido (JSON Mode)
-            JSONObject responseFormat = new JSONObject();
-            responseFormat.put("type", "json_object");
-            jsonBody.put("response_format", responseFormat);
+            //JSONObject responseFormat = new JSONObject();
+            //responseFormat.put("type", "json_object");
+            //jsonBody.put("response_format", responseFormat);
 
             JSONArray messages = new JSONArray();
                 
             // Instrução do sistema (obrigatório mencionar "JSON" quando usar json_object)
-            JSONObject systemMessage = new JSONObject();
-            systemMessage.put("role", "system");
-            systemMessage.put("content", "Você é um assistente útil. Responda sempre em formato JSON");
-            messages.put(systemMessage);
+            //JSONObject systemMessage = new JSONObject();
+            //systemMessage.put("role", "system");
+            //systemMessage.put("content", "Você é um assistente útil. Responda sempre em formato JSON");
+            //messages.put(systemMessage);
 
             // Mensagem do usuário
             JSONObject userMessage = new JSONObject();
