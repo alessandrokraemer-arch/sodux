@@ -2,11 +2,10 @@
 <%@ page import="java.sql.*" %>
 
 <%@ page import="java.net.URI" %>
-<%@ page import="import java.net.http.HttpClient" %>
-<%@ page import="import java.net.http.HttpRequest" %>
-<%@ page import="import java.net.http.HttpResponse" %>
-<%@ page import="import org.json.JSONArray" %>
-<%@ page import="import org.json.JSONObject" %>
+<%@ page import="java.net.http.HttpClient" %>
+<%@ page import="java.net.http.HttpRequest" %>
+<%@ page import="java.net.http.HttpResponse" %>
+<%@ page import="org.json.JSONArray" %>
 
 <html>
 <head></head>
