@@ -52,53 +52,52 @@ if (apiKey == null || apiKey.isEmpty()) { %>
 
             jsonBody.put("messages", messages);
 
-    //String pergunta = (String) request.getParameter("perguntaHTML");
+            //String pergunta = (String) request.getParameter("perguntaHTML");
 
-    // Configuração da requisição em JSON (Responses API / Chat Completions) e esse é o endpoint.
+            // Configuração da requisição em JSON (Responses API / Chat Completions) e esse é o endpoint.
 
+            //String jsonBody = "{'model': 'gpt-4o','messages': [{'role': 'user', 'content': 'Qual o dia hoje?''}]}";
 
+            // Cria o cliente e a requisição HTTP
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest requestJSON = HttpRequest.newBuilder()
+                .uri(URI.create("https://api.openai.com/v1/chat/completions"))
+                .header("Content-Type", "application/json")
+                .header("Authorization", "Bearer " + apiKey)
+                .POST(HttpRequest.BodyPublishers.ofString(jsonBody))
+                .build();
 
-    //String jsonBody = "{'model': 'gpt-4o','messages': [{'role': 'user', 'content': 'Qual o dia hoje?''}]}";
+            // Envia e imprime a resposta
+            HttpResponse<String> responseJSON = client.send(requestJSON, HttpResponse.BodyHandlers.ofString());
 
-    // Cria o cliente e a requisição HTTP
-    HttpClient client = HttpClient.newHttpClient();
-    HttpRequest requestJSON = HttpRequest.newBuilder()
-        .uri(URI.create("https://api.openai.com/v1/chat/completions"))
-        .header("Content-Type", "application/json")
-        .header("Authorization", "Bearer " + apiKey)
-        .POST(HttpRequest.BodyPublishers.ofString(jsonBody))
-        .build();
-
-    // Envia e imprime a resposta
-    HttpResponse<String> responseJSON = client.send(requestJSON, HttpResponse.BodyHandlers.ofString());
-
-    try {
-        String resposta = responseJSON.body().toString();
+            String resposta = responseJSON.body().toString();
     
-        out.println(resposta);
+            out.println(resposta);
 
-        // 1. Converte a String em um JSONObject
-        //JSONObject rootObject = new JSONObject(resposta);
+            // 1. Converte a String em um JSONObject
+            //JSONObject rootObject = new JSONObject(resposta);
 
-        // 2. Acessa o array "choices" e pega o primeiro item (índice 0)
-        //JSONArray choicesArray = rootObject.getJSONArray("choices");
-        //JSONObject firstChoice = choicesArray.getJSONObject(0);
+            // 2. Acessa o array "choices" e pega o primeiro item (índice 0)
+            //JSONArray choicesArray = rootObject.getJSONArray("choices");
+            //JSONObject firstChoice = choicesArray.getJSONObject(0);
 
-        // 3. Acessa o objeto "message" e extrai a string "content"
-        //JSONObject messageObject = firstChoice.getJSONObject("message");
-        //String conteudo = messageObject.getString("content");
+            // 3. Acessa o objeto "message" e extrai a string "content"
+            //JSONObject messageObject = firstChoice.getJSONObject("message");
+            //String conteudo = messageObject.getString("content");
     
-        //out.println(conteudo);
+            //out.println(conteudo);
 
-    } catch (Exception e) { %>
+        } catch (Exception e) { %>
        
         <p align="center">Erro no acesso a IA...</p>
         
-    <% }
-%> 
+<%      } 
+    } else { %> 
 
+        <p align="center">Acesse com uma pergunta</p>
 
-<% } %>
+<% } 
+} %>
 
 </body>
 </html>
