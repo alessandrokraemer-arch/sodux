@@ -17,7 +17,8 @@
 // e armazenamento dessa chave. 
 // String apiKey = System.getenv("OPENAI_API_KEY");
 
-String apiKey = "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";
+String apiKey "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";
+
 if (apiKey == null || apiKey.isEmpty()) { %>
 
     <p align="center">Chat desabilitado.</p>
