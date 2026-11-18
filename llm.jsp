@@ -64,7 +64,7 @@ if (apiKey == null || apiKey.isEmpty()) { %>
                 .uri(URI.create("https://api.openai.com/v1/chat/completions"))
                 .header("Content-Type", "application/json")
                 .header("Authorization", "Bearer " + apiKey)
-                .POST(HttpRequest.BodyPublishers.ofString(jsonBody))
+                .POST(HttpRequest.BodyPublishers.ofString(jsonBody.toString()))
                 .build();
 
             // Envia e imprime a resposta
