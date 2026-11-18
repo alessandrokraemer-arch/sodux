@@ -26,14 +26,7 @@ if (apiKey == null || apiKey.isEmpty()) { %>
     //String pergunta = (String) request.getParameter("perguntaHTML");
 
     // Configuração da requisição em JSON (Responses API / Chat Completions) e esse é o endpoint.
-    String jsonBody = """
-        {
-          "model": "gpt-4o",
-          "messages": [
-            {"role": "user", "content": "Qual o dia hoje?"}
-          ]
-        }
-        """;
+    String jsonBody = "{'model': 'gpt-4o','messages': [{'role': 'user', 'content': 'Qual o dia hoje?''}]}";
 
     // Cria o cliente e a requisição HTTP
     HttpClient client = HttpClient.newHttpClient();
