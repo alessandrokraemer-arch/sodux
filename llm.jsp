@@ -41,7 +41,7 @@ if (apiKey == null || apiKey.isEmpty()) { %>
             // Instrução do sistema (obrigatório mencionar "JSON" quando usar json_object)
             JSONObject systemMessage = new JSONObject();
             systemMessage.put("role", "system");
-            systemMessage.put("content", "Você é um assistente útil. Responda sempre em formato JSON contendo as chaves 'resumo' e 'topicos' (uma lista de strings).");
+            systemMessage.put("content", "Você é um assistente útil. Responda sempre em formato JSON");
             messages.put(systemMessage);
 
             // Mensagem do usuário
