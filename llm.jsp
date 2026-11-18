@@ -39,10 +39,10 @@ if (apiKey == null || apiKey.isEmpty()) { %>
             JSONArray messages = new JSONArray();
                 
             // Instrução do sistema (obrigatório mencionar "JSON" quando usar json_object)
-            JSONObject systemMessage = new JSONObject();
-            systemMessage.put("role", "system");
-            systemMessage.put("content", "Você é um assistente útil. Responda sempre em formato JSON contendo as chaves 'resumo' e 'topicos' (uma lista de strings).");
-            messages.put(systemMessage);
+            //JSONObject systemMessage = new JSONObject();
+            //systemMessage.put("role", "system");
+            //systemMessage.put("content", "Você é um assistente útil. Responda sempre em formato JSON contendo as chaves 'resumo' e 'topicos' (uma lista de strings).");
+            //messages.put(systemMessage);
 
             // Mensagem do usuário
             JSONObject userMessage = new JSONObject();
@@ -75,17 +75,17 @@ if (apiKey == null || apiKey.isEmpty()) { %>
             out.println(resposta);
 
             // 1. Converte a String em um JSONObject
-            //JSONObject rootObject = new JSONObject(resposta);
+            JSONObject rootObject = new JSONObject(resposta);
 
             // 2. Acessa o array "choices" e pega o primeiro item (índice 0)
-            //JSONArray choicesArray = rootObject.getJSONArray("choices");
-            //JSONObject firstChoice = choicesArray.getJSONObject(0);
+            JSONArray choicesArray = rootObject.getJSONArray("choices");
+            JSONObject firstChoice = choicesArray.getJSONObject(0);
 
             // 3. Acessa o objeto "message" e extrai a string "content"
-            //JSONObject messageObject = firstChoice.getJSONObject("message");
-            //String conteudo = messageObject.getString("content");
+            JSONObject messageObject = firstChoice.getJSONObject("message");
+            String conteudo = messageObject.getString("content");
     
-            //out.println(conteudo);
+            out.println(conteudo);
 
         } catch (Exception e) { %>
        
