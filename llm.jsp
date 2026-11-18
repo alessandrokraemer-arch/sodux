@@ -14,9 +14,8 @@
 <% 
 // Lê a chave da variável de ambiente OPENAI_API_KEY mas aqui dispenso e o melhor é com abordagem de banco de dados
 // e armazenamento dessa chave. 
-// String apiKey = System.getenv("OPENAI_API_KEY");
+String apiKey = System.getenv("OPENAI_API_KEY");
 
-String apiKey = "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";
 if (apiKey == null || apiKey.isEmpty()) { %>
 
     <p align="center">Chat desabilitado.</p>
