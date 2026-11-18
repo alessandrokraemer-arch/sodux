@@ -18,7 +18,7 @@ String apiKey = System.getenv("OPENAI_API_KEY");
 
 if (apiKey == null || apiKey.isEmpty()) { %>
 
-    <p align="center">Chat desabilitado.</p>
+    <p align="center">Chat desabilitado. <%=apiKey%> </p>
     
 <% } else {
 
