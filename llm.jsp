@@ -41,7 +41,7 @@ if (apiKey == null || apiKey.isEmpty()) { %>
 
     try {
         String resposta = responseJSON.body().toString();
-        out.println(resposta);
+    
         // 1. Converte a String em um JSONObject
         //JSONObject rootObject = new JSONObject(resposta);
 
