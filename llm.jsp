@@ -14,7 +14,8 @@
 
 <% 
 // Lê a chave da variável de ambiente OPENAI_API_KEY
-String apiKey = System.getenv("OPENAI_API_KEY");
+//String apiKey = System.getenv("OPENAI_API_KEY");
+String apiKey = getServletContext().getInitParameter("OPENAI_API_KEY");
 
 if (apiKey == null || apiKey.isEmpty()) { %>
 
