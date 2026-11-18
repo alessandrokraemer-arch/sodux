@@ -37,7 +37,7 @@ if (apiKey == null || apiKey.isEmpty()) { %>
 
     // Cria o cliente e a requisição HTTP
     HttpClient client = HttpClient.newHttpClient();
-    HttpRequest request = HttpRequest.newBuilder()
+    HttpRequest requestJSON = HttpRequest.newBuilder()
         .uri(URI.create("https://api.openai.com/v1/chat/completions"))
         .header("Content-Type", "application/json")
         .header("Authorization", "Bearer " + apiKey)
@@ -45,11 +45,11 @@ if (apiKey == null || apiKey.isEmpty()) { %>
         .build();
 
     // Envia e imprime a resposta
-    HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+    HttpResponse<String> responseJSON = client.send(requestJSON, HttpResponse.BodyHandlers.ofString());
 
-    String jsonResponse = response.body().toString();
+    String resposta = responseJSON.body().toString();
     // 1. Converte a String em um JSONObject
-    JSONObject rootObject = new JSONObject(jsonResponse);
+    JSONObject rootObject = new JSONObject(resposta);
 
     // 2. Acessa o array "choices" e pega o primeiro item (índice 0)
     JSONArray choicesArray = rootObject.getJSONArray("choices");
