@@ -13,11 +13,8 @@
 <body>
 
 <% 
-// Lê a chave da variável de ambiente OPENAI_API_KEY mas aqui dispenso e o melhor é com abordagem de banco de dados
-// e armazenamento dessa chave. 
-// String apiKey = System.getenv("OPENAI_API_KEY");
-
-String apiKey = "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";
+// Lê a chave da variável de ambiente OPENAI_API_KEY
+String apiKey = System.getenv("OPENAI_API_KEY");
 
 if (apiKey == null || apiKey.isEmpty()) { %>
 
