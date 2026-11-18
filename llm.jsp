@@ -43,18 +43,18 @@ if (apiKey == null || apiKey.isEmpty()) { %>
 
     String resposta = responseJSON.body().toString();
     // 1. Converte a String em um JSONObject
-    JSONObject rootObject = new JSONObject(resposta);
+    //JSONObject rootObject = new JSONObject(resposta);
 
     // 2. Acessa o array "choices" e pega o primeiro item (índice 0)
-    JSONArray choicesArray = rootObject.getJSONArray("choices");
-    JSONObject firstChoice = choicesArray.getJSONObject(0);
+    //JSONArray choicesArray = rootObject.getJSONArray("choices");
+    //JSONObject firstChoice = choicesArray.getJSONObject(0);
 
     // 3. Acessa o objeto "message" e extrai a string "content"
-    JSONObject messageObject = firstChoice.getJSONObject("message");
-    String content = messageObject.getString("content");
+    //JSONObject messageObject = firstChoice.getJSONObject("message");
+    //String content = messageObject.getString("content");
 %> 
 
-<%=content%>
+<%//content%>
 
 <% } %>
 
