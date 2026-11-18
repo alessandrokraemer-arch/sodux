@@ -17,7 +17,7 @@
 // e armazenamento dessa chave. 
 // String apiKey = System.getenv("OPENAI_API_KEY");
 
-String apiKey = "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";
+String apiKey = "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";
 if (apiKey == null || apiKey.isEmpty()) { %>
 
     <p align="center">Chat desabilitado.</p>
@@ -41,18 +41,24 @@ if (apiKey == null || apiKey.isEmpty()) { %>
     // Envia e imprime a resposta
     HttpResponse<String> responseJSON = client.send(requestJSON, HttpResponse.BodyHandlers.ofString());
 
-    String resposta = responseJSON.body().toString();
-    out.println(resposta);
-    // 1. Converte a String em um JSONObject
-    //JSONObject rootObject = new JSONObject(resposta);
+    try {
+        String resposta = responseJSON.body().toString();
+        out.println(resposta);
+        // 1. Converte a String em um JSONObject
+        //JSONObject rootObject = new JSONObject(resposta);
 
-    // 2. Acessa o array "choices" e pega o primeiro item (índice 0)
-    //JSONArray choicesArray = rootObject.getJSONArray("choices");
-    //JSONObject firstChoice = choicesArray.getJSONObject(0);
+        // 2. Acessa o array "choices" e pega o primeiro item (índice 0)
+        //JSONArray choicesArray = rootObject.getJSONArray("choices");
+        //JSONObject firstChoice = choicesArray.getJSONObject(0);
 
-    // 3. Acessa o objeto "message" e extrai a string "content"
-    //JSONObject messageObject = firstChoice.getJSONObject("message");
-    //String content = messageObject.getString("content");
+        // 3. Acessa o objeto "message" e extrai a string "content"
+        //JSONObject messageObject = firstChoice.getJSONObject("message");
+        //String content = messageObject.getString("content");
+    } catch (Exception e) { %>
+       
+        <p align="center">Erro no acesso a IA...</p>
+        
+    <% }
 %> 
 
 <%//content%>
