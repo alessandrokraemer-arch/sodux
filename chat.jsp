@@ -9,7 +9,19 @@
 <%@ page import="org.json.JSONArray" %>
 
 <html>
-<head><title>Chat IA</title></head>
+<head>
+    <title>Chat</title>
+    <style>
+			input[type=text] {
+ 				font-size:14pt;
+				color:red;
+			}
+            input[type=submit] {
+                font-size:14pt;
+                color:blue;
+            }
+	</style>
+</head>
 <body>
 
 <% 
@@ -68,8 +80,9 @@ if (apiKey == null || apiKey.isEmpty()) { %>
 
         <%=conteudo%>        
 
+        </br>
         <form action="chat.jsp" method="post">
-            <input type="text" name="pergunta"/></form></br>
+            <input type="text" name="pergunta"/>
             <input type="submit" value="Demanda"/>
         </form>
 
@@ -81,7 +94,7 @@ if (apiKey == null || apiKey.isEmpty()) { %>
     } else { %> 
 
         <form action="chat.jsp" method="post">
-            <input type="text" name="pergunta"/></form></br>
+            <input type="text" name="pergunta"/></form>
             <input type="submit" value="Demanda"/>
         </form>
 
