@@ -22,14 +22,13 @@ if (apiKey == null || apiKey.isEmpty()) { %>
     
 <% } else {
 
-    //String perguntaUsuario = request.getParameter("pergunta");
-    String perguntaUsuario = "o que fazer hoje?";
+    String perguntaUsuario = request.getParameter("pergunta");
 
     if (perguntaUsuario != null && !perguntaUsuario.trim().isEmpty()) {
         try {
             // Montar o JSON de requisição para a OpenAI
             JSONObject jsonBody = new JSONObject();
-            jsonBody.put("model", "gpt-4o");
+            jsonBody.put("model", "gpt-4o-mini");
 
             JSONArray messages = new JSONArray();
 
@@ -65,17 +64,26 @@ if (apiKey == null || apiKey.isEmpty()) { %>
             // 3. Acessa o objeto "message" e extrai a string "content"
             JSONObject messageObject = firstChoice.getJSONObject("message");
             String conteudo = messageObject.getString("content");
-    
-            out.println(conteudo);
+%>    
 
-        } catch (Exception e) { %>
+        <%=conteudo%>        
+
+        <form action="chat.jsp" method="post">
+            <input type="text" name="pergunta"/></form></br>
+            <input type="submit" value="Demanda"/>
+        </form>
+
+<%        } catch (Exception e) { %>
        
         <p align="center">Erro no acesso a IA...</p>
         
 <%      } 
     } else { %> 
 
-        <p align="center">Acesse com uma pergunta</p>
+        <form action="chat.jsp" method="post">
+            <input type="text" name="pergunta"/></form></br>
+            <input type="submit" value="Demanda"/>
+        </form>
 
 <% } 
 } %>
