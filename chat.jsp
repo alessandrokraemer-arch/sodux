@@ -84,7 +84,7 @@ if (apiKey == null || apiKey.isEmpty()) { %>
         <p><%=conteudo%></p>        
 
         <form action="chat.jsp" method="post">
-            <input type="text" name="pergunta"/>
+            <input type="text" name="pergunta" size="30"/>
             <input type="submit" value="Demanda"/>
         </form>
 
@@ -96,7 +96,7 @@ if (apiKey == null || apiKey.isEmpty()) { %>
     } else { %> 
 
         <form action="chat.jsp" method="post">
-            <input type="text" name="pergunta"/>
+            <input type="text" name="pergunta" size="30"/>
             <input type="submit" value="Demanda"/>
         </form>
 
