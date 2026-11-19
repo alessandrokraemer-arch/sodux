@@ -12,6 +12,9 @@
 <head>
     <title>Chat</title>
     <style>
+            p {
+				font-size: 14pt;
+			}
 			input[type=text] {
  				font-size:14pt;
 				color:red;
@@ -78,9 +81,8 @@ if (apiKey == null || apiKey.isEmpty()) { %>
             String conteudo = messageObject.getString("content");
 %>    
 
-        <%=conteudo%>        
+        <p><%=conteudo%></p>        
 
-        </br>
         <form action="chat.jsp" method="post">
             <input type="text" name="pergunta"/>
             <input type="submit" value="Demanda"/>
@@ -94,7 +96,7 @@ if (apiKey == null || apiKey.isEmpty()) { %>
     } else { %> 
 
         <form action="chat.jsp" method="post">
-            <input type="text" name="pergunta"/></form>
+            <input type="text" name="pergunta"/>
             <input type="submit" value="Demanda"/>
         </form>
 
