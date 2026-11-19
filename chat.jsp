@@ -81,7 +81,7 @@ if (apiKey == null || apiKey.isEmpty()) { %>
             String conteudo = messageObject.getString("content");
 %>    
 
-        <p><%=conteudo%></p>        
+        <p>RESPOSTA: <%=conteudo%></p>        
 
         <form action="chat.jsp" method="post">
             <input type="text" name="pergunta" size="30"/>
