@@ -13,39 +13,31 @@ if ( ses != null ) {
 
 <html>
     <head>
-        <title>LOGIN...</title>
-        <style>
-			td {
-				font-size: 14pt;
-			}
-			input[type=text] {
- 				font-size:14pt;
-				color:red;
-			}
-      		input[type=password] {
- 				font-size:14pt;
-				color:red;
-			}
-            input[type=submit] {
-                font-size:14pt;
-                color:blue;
-            }
-		</style>
+        <title>ACESSO AO STRANGLED FIG DO ERP</title>
+        <link rel="stylesheet" href="estilo.css">
     </head>
     <body>
+        </br></br>
+        <p style="text-align: center">Strangled Fig Pattern um novo ERP</p>
         <form action="login.jsp" method="post">
-        <table align="center">
+        <table class="table-login">
             <tr>
-                <td>USER</td>
-                <td align="right"><input type="text" size="20" name="user"/></td>
-            </tr>
-            <tr>
-                <td>PASSWORD</td>
-                <td align="right"><input type="password" size="20" name="password"/></td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="submit" value="ENTRAR NO SISTEMA COM SESSÃO"/>
+                <td>
+                    <table align="center">
+                        <tr>
+                            <td class="texto_destaque">USUÁRIO</td>
+                            <td><input type="text" size="20" name="user" autofocus/></td>
+                        </tr>
+                        <tr>
+                            <td class="texto_destaque">SENHA</td>
+                            <td><input type="password" size="20" name="password"/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: center;">
+                                <input type="submit" value="LOGIN"/>
+                            </td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
         </table>

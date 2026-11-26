@@ -9,19 +9,7 @@ String ses = (String) session.getAttribute("autorizacao");
 if ( ses != null )
     if ( !ses.equals(("descabida")) ) 
         response.sendRedirect("index.jsp");
-%>
 
-<html>
-    <head>
-        <title>AVERIGUAÇÃO DO ACESSO</title>
-        <style>
-            p {
-                font-size:18pt;
-            }
-        </style>
-    </head>
-<body>
-<%
 //aqui conexão com banco de dados
 Connection conn = null;
 Statement stmt = null;
@@ -50,11 +38,26 @@ try {
         
         session.setAttribute("autorizacao", session.getId());
         session.setAttribute("usuario", usuarioBD);
-      
-        out.print("<p align='center'>AUTORIZADO <a href='autorizo.jsp'>ACESSE MAIS</a></p>");
+
+        response.sendRedirect("autorizo.jsp");
+
     } else {
-        out.print("<p align='center'>TOKEN NÃO ENCONTRADO. ASSINE OU ATUALIZE O PLANO...</p>");
-    }
+%>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AVERIGUAÇÃO DO ACESSO</title>
+        <link rel="stylesheet" href="estilo.css">
+    </head>
+<body>
+
+    <p class='aviso' style='text-align: center;'>TOKEN NÃO ENCONTRADO. ASSINE OU ATUALIZE O PLANO...</p>
+
+</body>
+</html>
+
+<%   }
 
     //aqui é acionado caso ocorra erro no acesso ao banco etc
 } catch (Exception e) {	
@@ -62,6 +65,3 @@ try {
     //out.print((String) e.getMessage());
 	//response.sendRedirect("erro/erro.jsp");
 }%>
-</body>
-</html>
-
